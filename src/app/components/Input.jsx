@@ -10,6 +10,7 @@ import {
   uploadBytesResumable,
   getDownloadURL,
 } from "firebase/storage";
+
 import {
   addDoc,
   collection,
@@ -20,10 +21,10 @@ import {
 export default function Input() {
   const { data: session } = useSession();
   const [imageFileUrl, setImageFileUrl] = useState(null);
-  const [selectedFile, setSelectedFile] = useState(null);
-  const [imageFileUploading, setImageFileUploading] = useState(false);
-  const [text, setText] = useState("");
-  const [postLoading, setPostLoading] = useState(false);
+  const [selectedFile, setSelectedFile] = useState(null); // [1
+  const [imageFileUploading, setImageFileUploading] = useState(false); // [2
+  const [text, setText] = useState(""); // [3
+  const [postLoading, setPostLoading] = useState(false); // [4
   const imagePickRef = useRef(null);
   const db = getFirestore(app);
   const addImageToPost = (e) => {
@@ -96,8 +97,8 @@ export default function Input() {
       />
       <div className="w-full divide-y divide-gray-200">
         <textarea
-          className="w-full border-none outline-none tracking-wide min-h-[50px] text-gray-700"
-          placeholder="What's happening"
+          className="w-full border-none outline-none tracking-wide min-h-[50px] text-gray-700 "
+          placeholder="Whats happening"
           rows="2"
           value={text}
           onChange={(e) => setText(e.target.value)}
@@ -107,7 +108,7 @@ export default function Input() {
             src={imageFileUrl}
             alt="image"
             className={`w-full max-h-[250px] object-cover cursor-pointer
-              ${imageFileUploading ? "animate-pulse" : ""}`}
+            ${imageFileUploading ? "animate-pulse" : ""}`}
           />
         )}
         <div className="flex items-center justify-between pt-2.5">
